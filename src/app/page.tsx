@@ -1,15 +1,18 @@
-import Slideshow from '@/components/main/hero'
+import Slideshow from '@/components/main/slideShow'
 import Promotion from '@/components/main/promotion/promotion'
-import Image from 'next/image'
+import Subscribe from '@/components/main/subscribe'
+import Hero from '@/components/main/hero'
 
 export default function Home() {
   return (
     <div>
-     <Slideshow />
-     <Promotion />
-     <div>
-      
-     </div>
+      <Hero />
+      <Promotion />
+      <Slideshow />
+      <Subscribe />
+      <div>
+
+      </div>
     </div>
   )
 }

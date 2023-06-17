@@ -9,21 +9,6 @@ export const product = {
       type: "string",
     },
     {
-      name: "type",
-      title: "Type",
-      type: "string",
-    },
-    {
-      name: "category",
-      title: "Category",
-      type: "reference",
-      to: [
-        {
-          type: "category",
-        },
-      ],
-    },
-    {
       name: "description",
       title: "Product Description",
       type: "string",
@@ -31,19 +16,17 @@ export const product = {
     {
       name: "price",
       title: "Price",
-      type: "string",
+      type: "number",
     },
     {
       name: "images",
-      title: "Product Images",
-      type: "array",
-      of: [
-        {
-          name: "image",
-          title: "Product Images",
-          type: "image",
-        },
-      ],
+      title: "Product Image",
+      type: "image",
+    },
+    {
+      name: "pageImage",
+      title: "Page Image",
+      type: "image",
     },
     {
       name: "productDetails",

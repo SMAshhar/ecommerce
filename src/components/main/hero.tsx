@@ -1,49 +1,45 @@
 'use client'
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import localFont from '@next/font/local'
 
-const slides = [
-    {
-        title: 'Every Morning as Fresh as Lemons...!',
-        image: '/tea1.webp',
-    },
-    {
-        title: 'Be Fit EveryDay, All The Time...!',
-        image: '/tea2.jpg',
-    },
-];
+const cal = localFont({
+    src: [
+      {
+        path: '../../../public/fonts/Calligrapher-JRxaE.ttf',
+        weight: '400'
+      },
+    ],
+    variable: '--font-cal'
+  })
 
-const Slideshow: React.FC = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+const Hero: React.FC = () => {
+    const [isHeadingVisible, setIsHeadingVisible] = useState(false);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-        }, 5000);
-
-        return () => clearInterval(interval);
+        setIsHeadingVisible(true);
     }, []);
 
     return (
-        <div className="relative w-full h-[80vh] -z-50">
-            {slides.map((slide, index) => (
-                <div
-                    key={index}
-                    className={`flex bg-black absolute justify-center text-center items-center -z-50 top-0 left-0 w-full h-full transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                        }`}
-                >
-                    <div className="flex items-center justify-center h-full">
-                        <h1 className="text-6xl font-light text-white justify-center items-center italic flex z-50">{slide.title}</h1>
+        <div className="relative h-[40rem]">
+            <div
+                className={`absolute flex inset-0 bg-cover justify-center items-start bg-[url('/bg.avif')] bg-center bg-opacity-50 `}
+            // style={{ backgroundImage: '/hero.jpg' }}
+            >
+                <div className={`flex items-center text-rose-400 justify-center h-full w-full transition-opacity duration-1000 ${isHeadingVisible ? 'opacity-100' : 'opacity-0'
+                    }`}>
+                    <div>
+                        <h1 className={`${cal.variable} font-cal text-9xl w-full italic font-extralight text-start transform translate-y-4`}>
+                            The Pink
+                        </h1>
+                        <h1 className={`${cal.variable} font-cal text-9xl w-full italic font-extralight text-end transform translate-y-4`}>
+                            Lotus
+                        </h1>
                     </div>
-                    <img
-                        src={slide.image}
-                        alt={slide.title}
-                        className="absolute inset-0 object-cover w-full h-full -z-50"
-                    />
                 </div>
-            ))}
+            </div>
         </div>
     );
 };
 
-export default Slideshow;
+export default Hero;

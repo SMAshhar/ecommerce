@@ -14,6 +14,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        better:['var(--font-better)'],
+        cal:['var(--font-cal)'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
