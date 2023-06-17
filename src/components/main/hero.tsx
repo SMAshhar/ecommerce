@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import localFont from '@next/font/local'
 
 const cal = localFont({
@@ -29,10 +28,10 @@ const Hero: React.FC = () => {
                 <div className={`flex items-center text-rose-400 justify-center h-full w-full transition-opacity duration-1000 ${isHeadingVisible ? 'opacity-100' : 'opacity-0'
                     }`}>
                     <div>
-                        <h1 className={`${cal.variable} font-cal text-9xl w-full italic font-extralight text-start transform translate-y-4`}>
+                        <h1 className={`${cal.variable} font-cal text-5xl md:text-7xl xl:text-9xl w-full italic font-extralight text-start transform translate-y-4`}>
                             The Pink
                         </h1>
-                        <h1 className={`${cal.variable} font-cal text-9xl w-full italic font-extralight text-end transform translate-y-4`}>
+                        <h1 className={`${cal.variable} font-cal text-5xl md:text-7xl xl:text-9xl w-full italic font-extralight text-end transform translate-y-4`}>
                             Lotus
                         </h1>
                     </div>

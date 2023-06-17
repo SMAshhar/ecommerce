@@ -10,7 +10,7 @@ export default function Subscribe() {
                 <div className='text-4xl font-light'>
                     Sign up and save
                 </div>
-                <div className='flex flex-col text-md py-4 tracking-widest font-light'>
+                <div className='flex flex-col text-md py-4 tracking-widest font-light p-2'>
                 Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.
                     <div className='flex gap-2 py-8'>
                         <input placeholder='Input email address' className='p-2 text-xs border w-3/4 border-rose-400 border-spacing-1' />

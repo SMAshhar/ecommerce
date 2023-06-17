@@ -25,7 +25,7 @@ const Slideshow: React.FC = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-[80vh] -z-50">
+        <div className="relative w-full h-[80vh] z-50">
             {slides.map((slide, index) => (
                 <div
                     key={index}

@@ -14,7 +14,7 @@ const Tile: React.FC<TileProps> = ({ name, image, price, _id }) => {
       <Link href={'/' +_id} className="flex flex-col items-center justify-center">
         <Image src={image} alt={name} width={250} height={350} className="w-80 h-80 object-cover mb-10 rounded-full" />
         <h3 className="text-2xl font-light mb-2">{name}</h3>
-        <p className="text-gray-600">${price}</p>
+        <p className="text-gray-600">${price}.00</p>
       </Link>
     </div>
   );

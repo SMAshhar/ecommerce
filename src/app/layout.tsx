@@ -2,6 +2,7 @@ import Header from '@/components/header'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/footer'
+import Providers from '@/components/product/Providor'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+            <Header />
+            <div className='bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 max-w-[1920px]'>
+              {children}
+            </div>
+            <Footer />
+        </Providers>
       </body>
     </html>
   )
