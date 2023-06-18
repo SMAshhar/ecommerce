@@ -14,7 +14,7 @@ export default function Footer() {
                         <Image src={'/logo.png'} alt="logo" height={50} width={150} />
                     </div>
                     <div className='mb-10'>
-                        Small, artisan label that offers a thoughtfully curated collection of high quality everyday essentials made.
+                        For Us: Tea is life. Tea is the air we breath. 
                     </div>
                     <div className='flex gap-4'>
                         <Link href='/' className='flex h-10 w-10 justify-center items-center  rounded-lg bg-gray-200'><IoLogoTwitter /></Link>

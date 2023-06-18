@@ -1,27 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsBagDash } from 'react-icons/bs'
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 import Link from 'next/link';
-
+import { useCookies } from 'react-cookie';
 
 
 // Cart Icon on Header
 const CartIcon = () => {
 
-  const cartValue = useSelector(
-    (state: RootState) => state.cart.totalQty
-  )
+  const [cookies] = useCookies(['products']);
+  const [cartCount, setCartCount] = useState(0);
+  const [spin, setSpin] = useState(false)
 
-  // Call Cart vaalue from local storage
+
+  const handleClick = () => {
+    setSpin(true)
+    setTimeout(() => {
+      setSpin(false);
+    }, 2000);
+  }
+
+
+  useEffect(() => {
+    // Retrieve the products array from cookies
+    const products = cookies.products || [];
+
+    // Update the cart count based on the number of products
+    setCartCount(products.length);
+  }, [cookies]);
 
   return (
     <div className="relative">
       <Link href={'/checkout'}>
         <div className=" w-12 h-12 flex items-center justify-center hover:scale-110 duration-300">
-          <BsBagDash className="text-gray-800 text-2xl" />
+          <button onClick={handleClick}><BsBagDash className={`${spin ? "animate-spin" : ""} text-gray-800 text-2xl`} /></button>
           <div className="absolute -top-1 -right-1 bg-rose-300 rounded-full w-5 h-5 flex items-center justify-center">
-            <span className="text-white text-xs font-bold">{cartValue}</span>
+            <div className="text-white text-xs font-bold">{cartCount}</div>
           </div>
         </div>
       </Link>
