@@ -7,7 +7,7 @@ import { RiFacebookFill } from 'react-icons/ri'
 
 export default function Footer() {
     return (
-        <div className='flex flex-col w-auto bg-white border-t-2 border-rose-100 max-w-[1920px]'>
+        <div className='flex flex-col w-auto bg-gradient-to-t from-rose-200 via-rose-100 to-rose-200 border-t-2 border-rose-100 max-w-[1920px] '>
             <div className='flex flex-col md:flex-row justify-center items-start w-full px-4 md:px-16 xl:px-28 my-8 xl:my-10 text-rose-400'>
                 <div className='md:w-1/4 h-full md:pr-16'>
                     <div className="mb-10">

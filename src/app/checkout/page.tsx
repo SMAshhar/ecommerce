@@ -1,41 +1,50 @@
 'use client'
-import React, { useState } from "react";
+import { useState } from "react";
 import { BiShoppingBag, BiTrash } from "react-icons/bi";
+import { useCallback } from 'react';
 
-import { product } from "@/lib/type";
-import CartTile from "@/components/tile/cartTile";
-import { client } from "@/lib/sanityClient";
 import { urlFor } from "@/lib/sanityImage";
-import { productActions } from "@/store/slice/productSlice";
 import { toast } from "react-hot-toast";
 
 import { useCookies } from 'react-cookie';
 import StripeCheckout from "./stripe";
+import Link from "next/link";
+import localFont from "@next/font/local";
 
 
+const cal = localFont({
+    src: [
+        {
+            path: '../../../public/fonts/Calligrapher-JRxaE.ttf',
+            weight: '400'
+        },
+    ],
+    variable: '--font-cal'
+})
 
-async function CartTile2(title: string, qty: number, price: number, images: any, size: string) {
+
+async function CartTile2(title: string, qty: number, price: number, images: any, size: string, id: string) {
 
     return (
-        <div className='relative border-2 my-2 flex flex-col sm:flex-row gap-4 w-full p-2 px-4 rounded-lg text-gray-500'>
+        <div className='relative border-2 my-2 flex flex-col sm:flex-row gap-4 w-full max-w-3/4 p-2 md:px-4 rounded-lg text-gray-500'>
             <div className='h-full items-center justify-center flex'>
                 <img src={urlFor(images).url()} alt={title} width={200} height={200} />
             </div>
-            <div className='flex flex-col w-1/2 p-4'>
-                <div className='text-2xl flex w-full flex-grow'>
+            <div className='flex flex-col md:w-1/2 p-1 md:p-4 justify-center md:justify-start'>
+                <Link href={`/checkout/${id}`} className='text-lg md:text-2xl justify-center md:justify-start hover:underline hover:underline-offset-1 flex w-full flex-grow'>
                     {title}
-                </div>
-                <div>
+                </Link>
+                <div className=" text-center md:text-start">
                     Delivery Estimation
                 </div>
-                <div className='text-yellow-500 height-full'>
+                <div className='text-yellow-500 height-full text-center md:text-start'>
                     5 Working Days
                 </div>
-                <div className='text-xl text-black'>
+                <div className='text-xl text-black text-center md:text-start'>
                     {`$ ` + price * qty}
                 </div>
             </div>
-            <div className='flex justify-end items-end h-full'>
+            <div className='flex justify-center items-center md:justify-end md:items-end h-full'>
                 {qty + ` bags of ${size}`}
             </div>
         </div>
@@ -43,91 +52,7 @@ async function CartTile2(title: string, qty: number, price: number, images: any,
 
 }
 
-
-
-// export async function CartTile1(item: product, qty: number) {
-
-//     const [cookies, setCookies] = useCookies(['products'])
-//     const handleQuantityChange = (e: any) => {
-//         const newQuantity = parseInt(e.target.value);
-
-//         // Find the index of the product in the products array
-//         const index = cookies.products.findIndex((p: any) => p.id === item._id);
-
-//         // Create a copy of the products array
-//         const updatedProducts = [...cookies.products];
-
-//         // Update the quantity of the product at the specified index
-//         updatedProducts[index].quantity = newQuantity;
-
-//         // Update the products in the cookies
-//         setCookies('products', updatedProducts);
-//     };
-
-//     const handleDelete = () => {
-//         // Filter out the product to be deleted from the products array
-//         const updatedProducts = cookies.products.filter((p: any) => p.id !== item._id);
-
-//         // Update the products in the cookies
-//         setCookies('products', updatedProducts);
-//     };
-
-//     console.log('item + qty => ', item, qty)
-
-//     return (
-//         <div className='relative my-2 flex flex-col sm:flex-row gap-4 w-screen/2 p-2 px-4 rounded-lg border-2 border-rose-300 text-gray-500'>
-//             <div className='h-full items-center justify-center flex'>
-//                 <img src={urlFor(item.images).url()} alt={item._id} width={200} height={200} />
-//             </div>
-//             <div className='flex flex-col w-1/2'>
-//                 <div className='text-2xl flex w-full flex-grow'>
-//                     {item.title}
-//                 </div>
-//                 <div>
-//                     Delivery Estimation
-//                 </div>
-//                 <div className='text-yellow-500 height-full'>
-//                     5 Working Days
-//                 </div>
-//                 <div className='text-xl text-black'>
-//                     {`$ ` + item.price * qty}
-//                     <div className="quantity-section">
-//                         <label htmlFor={`quantity-${qty}`}>Quantity:</label>
-//                         <input
-//                             id={`quantity-${qty}`}
-//                             type="number"
-//                             min="1"
-//                             value={qty}
-//                             onChange={handleQuantityChange}
-//                         />
-//                     </div>
-//                 </div>
-//             </div>
-//             <div className='flex flex-col justify-end w-full p-2' >
-//                 <button onClick={() => handleDelete} className='flex justify-end items-start p-4'>
-//                     <BiTrash />
-//                 </button>
-
-//             </div>
-
-//         </div>
-//     )
-// }
-
-
-async function getProductData() {
-    const res = await client.fetch(`*[_type=="product"]{
-        title,
-        _id,
-        images,
-        type,
-        price
-    }`);
-    return res
-}
-
-
-export default async function Cart() {
+export default function Cart() {
 
     const [cookies, setCookies] = useCookies(['products']);
     const [trash, setTrash] = useState(false)
@@ -135,68 +60,60 @@ export default async function Cart() {
     const products = cookies.products || [];
 
     // console.log('this is products: ', products, products.length)
-    const productsFromSanity = await getProductData()
 
     const handleDelete = (id: string) => {
-        // Filter out the product to be deleted from the products array
-        setTrash(true)
+        setTrash(true);
+        const updatedProducts = products.filter((p: any) => p.id !== id);
         setTimeout(() => {
             setTrash(false);
         }, 2000);
-        const updatedProducts = cookies.products.filter((p: any) => p.id !== id);
 
-        // Update the products in the cookies
         setCookies('products', updatedProducts);
-        toast.success('Item removed successfully.')
-        // setTrash(false)
+        toast.success('Item removed successfully.');
     };
-
 
     // Retrieve the products array from cookies
     console.log(products)
 
     if (products.length > 0) {
         return (
-            <div className="flex gap-8" >
-                <div className="text-gray-500 bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 mx-20 flex flex-col w-2/3 my-8">
-                    {products?.map((item: any, index: number) => (
+            <div className="flex flex-col gap-8" >
+                <div className={`px-8 my-20 w-full text-center py-5 text-5xl md:text-7xl xl:text-8xl ${cal.variable} font-cal text-rose-600`}>Cart</div>
+                <div className="text-gray-500 bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 mx-4 md:mx-20 flex flex-col my-8">
+                    {products.map((item: any, index: number) => (
                         <div key={index}>
-                            {productsFromSanity.map((data: product) => (
-                                <div key={data._id}>
-                                    {item.id == data._id &&
-                                        <div className="flex bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200">
-                                            {CartTile2(data.title, item.qty, data.price, data.images, item.size)}
-                                            <div className='text-xl text-black'>
-                                                {/* {`$ ` + item.price * item.qty} */}
-                                                <div className='flex flex-col justify-end w-full p-2' >
-                                                    <button onClick={() => handleDelete(item.id)} className={`${trash ? 'animate-spin' : ''} flex justify-end items-start p-4`}>
-                                                        <BiTrash />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
+                            <div className="flex bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200">
+                                {CartTile2(item.title, item.qty, item.price, item.images, item.size, item.id)}
+                                <div className='text-xl text-black'>
+                                    <div className='flex flex-col justify-end w-full p-2' >
+                                        <button
+                                            onClick={() => handleDelete(item.id)}
+                                            className={`${trash ? 'animate-spin' : ''} flex justify-end items-start p-4`}
+                                        >
+                                            <BiTrash />
+                                        </button>
+                                    </div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
                     ))}
                 </div>
                 <div>
-                    <StripeCheckout />
+                    <StripeCheckout products={products} />
                 </div>
             </div>
         )
     } else {
         return (
-            <div className="w-screen bg-white">
-                <div className=" text-rose-400 text-2xl font-bold justify-start px-40 py-16 items-center flex">
+            <div className="w-full bg-white">
+                <div className=" text-rose-400 text-lg md:text-2xl text-center font-bold justify-center md:justify-start px-40 py-16 items-center flex">
                     Shopping Cart
                 </div>
-                <div className="flex w-screen justify-center items-center flex-col pt-8 pb-28">
-                    <div className="flex text-rose-400 text-9xl font-bold justify-start p-4 items-center ">
+                <div className="flex w-full justify-center items-center flex-col pt-8 pb-28">
+                    <div className="flex text-rose-400 text-5xl md:text-9xl font-bold md:justify-start p-4 items-center ">
                         <BiShoppingBag />
                     </div>
-                    <div className=" text-rose-400 tracking-widest text-3xl font-bold justify-start items-center flex">
+                    <div className=" text-rose-400 tracking-widest text-3xl text-center font-bold md:justify-start items-center flex">
                         Your shopping bag is empty
                     </div>
                 </div>

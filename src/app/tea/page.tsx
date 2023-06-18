@@ -1,4 +1,4 @@
-import React, { cache } from "react";
+import React from "react";
 import { client } from "@/lib/sanityClient";
 import ProductTiles from "@/components/tile/productTile";
 
@@ -33,7 +33,9 @@ export default async function AllProducts() {
 
     return (
         <div className="flex flex-col gap-16 items-center flex-wrap justify-center mx-14 pb-16">
-            <div className={`px-8 py-5 text-5xl md:text-7xl xl:text-8xl text-center ${cal.variable} font-cal text-rose-600`}>Our Auspicious Teas</div>
+            <div className={`px-8 pt-14 py-5 text-6xl md:text-7xl xl:text-8xl text-center ${cal.variable} font-cal text-rose-600`}>Our Auspicious Teas</div>
+            <div className="text-gray-500 text-md tracking-widest py-2 text-justify md:text-center ">A curated selection of exceptional and premium Japanese green tea and matcha, directly sourced with the farmers and shipped from Fukuoka, Japan. Start your green tea journey with IKKYU and discover an amazing and healthy universe of taste and flavors.
+            </div>
             <div className="text-rose-400 flex flex-wrap max-w-[130vh] gap-16 justify-center items-center">
                 {data?.map((item: partialProduct) => (
                     <Link href={`/${item._id}`} key={item._id}>

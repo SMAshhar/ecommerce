@@ -9,7 +9,7 @@ export default function Header() {
         <div className='flex w-full max-w-[1920px]'>
             {/* Meny for big screens */}
             <div className='flex w-full '>
-                <div className=" flex bg-red-50 items-center justify-center w-full h-16">
+                <div className=" flex bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 items-center justify-center w-full h-16">
                     <Link href={'/'} className='hidden md:flex text-md italic text-center font-light mx-4' >
                         <div className='flex w-20'> Pink Lotus</div>
                     </Link>

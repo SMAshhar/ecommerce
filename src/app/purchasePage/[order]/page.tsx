@@ -2,8 +2,7 @@
 import React from 'react'
 
 import AddCart from '@/components/product/AddToCart';
-import { client } from '@/lib/sanityClient';
-import Image from 'next/image';
+import { client } from '@/lib/sanityClient';;
 import { urlFor } from '@/lib/sanityImage';
 
 async function getProductData(id: string) {
@@ -25,7 +24,7 @@ export default async function Order({ params }: { params: any }) {
     return (
         <div>
             <div className='flex flex-col md:flex-row justify-center py-14 items-center'>
-                <div className='md:w-1/2 justify-end flex p-2'>
+                <div className='md:w-1/2 justify-end flex p-5'>
                     <img src={urlFor(data[0].images).url()} alt='product' width={500} height={500} />
                 </div>
                 <div className='md:w-1/2'>

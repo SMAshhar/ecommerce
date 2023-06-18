@@ -1,7 +1,7 @@
 'use client'
 import { product } from '@/lib/type'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { CgShoppingCart } from 'react-icons/cg'
 
 import toast from 'react-hot-toast'
@@ -14,11 +14,19 @@ export default function AddCart({ item }: { item: product }) {
     const [size, setSize] = useState('500 gm')
 
     const addProduct = () => {
-        const newProduct = { id: item._id, qty: qty, price: item.price, size:size };
+        const newProduct = { title: item.title, images: item.images, id: item._id, qty: qty, price: size == '500 gm' ? item.price : item.price * qty + 0.25 * item.price * qty, size: size };
         const updatedProducts = [...products, newProduct];
         setProducts(updatedProducts);
         setCookie('products', updatedProducts);
-        toast.success(`${qty} packets of ${item.title} of ${size} added to cart.`)
+        console.log(newProduct)
+        toast.success(`${qty} packets of ${item.title} of ${size} added to cart.`, {
+            icon: '❤️',
+            style: {
+              borderRadius: '10px',
+              background: '#FB856A',
+              color: '#fff',
+            },
+          })
     };
 
 
@@ -26,10 +34,10 @@ export default function AddCart({ item }: { item: product }) {
     return (
         <div className='flex flex-col justify-start py-8 gap-1'>
             <div className='flex'>
-                <button onClick={() => setSize("500 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-md flex justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-lg font-bold mr-8'>500 gm</button>
-                <button onClick={() => setSize("750 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-md flex justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-lg font-bold mr-8'>750 gm</button>
+                <button onClick={() => setSize("500 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-s-3xl flex rounded-e-3xl justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-lg mr-8'>500 gm</button>
+                <button onClick={() => setSize("750 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-s-3xl flex rounded-e-3xl justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-lg mr-8'>750 gm</button>
                 <div className='text-gray-500 text-2xl flex justify-center items-center py-4'>
-                    {`$ ${size=='500 gm'?item.price * qty : item.price * qty + 0.25 * item.price * qty}`}
+                    {`$ ${size == '500 gm' ? item.price * qty : item.price * qty + 0.25 * item.price * qty}`}
                     {/* $s */}
                 </div>
             </div>

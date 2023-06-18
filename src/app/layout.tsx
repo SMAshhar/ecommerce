@@ -2,7 +2,7 @@ import Header from '@/components/header'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/footer'
-import Providers from '@/components/product/Providor'
+import toast, { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,13 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
             <Header />
             <div className='bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 max-w-[1920px]'>
               {children}
+              <Toaster 
+                position="bottom-right"
+                reverseOrder={false}
+                />
             </div>
             <Footer />
-        </Providers>
       </body>
     </html>
   )

@@ -77,7 +77,7 @@ const Promotion: React.FC = () => {
         <div className="container mx-auto my-24 py-8 flex flex-col justify-center items-center">
             <h2 className="text-6xl font-light italic text-rose-400 mb-8">Promotion</h2>
             <div className="relative">
-                <div className="flex flex-col md:flex-row space-x-4 gap-10">
+                <div className="flex flex-col md:flex-row space-x-4 gap-2 lg:gap-10">
                     {slide.tiles.map((tile, index) => (
                         <Tile key={index} name={tile.name} image={tile.image} price={tile.price} _id={tile._id} />
                     ))}

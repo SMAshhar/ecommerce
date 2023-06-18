@@ -16,7 +16,7 @@ const CartIcon = () => {
     setSpin(true)
     setTimeout(() => {
       setSpin(false);
-    }, 2000);
+    }, 3000);
   }
 
 
