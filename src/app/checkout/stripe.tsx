@@ -1,7 +1,6 @@
 'use client'
 import React, {useState} from 'react'
 import getStripePromise from '@/lib/stripe';
-import ImSpinner2 from 'react-icons/im'
 
 
 export default function StripeCheckout({ products }: { products: any }) {
@@ -11,9 +10,6 @@ export default function StripeCheckout({ products }: { products: any }) {
     const handleCheckout = async () => {
         setLoader(true)
         const stripe = await getStripePromise()
-        // const products = [{
-
-        // }]
         const response = await fetch('/api/stripe-session', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },

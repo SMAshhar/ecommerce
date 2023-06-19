@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useCookies } from 'react-cookie';
 import localFont from '@next/font/local';
 import Link from 'next/link';
@@ -18,6 +18,17 @@ const cal = localFont({
 export default function Success() {
     const [cookies, setCookies, removeCookies] = useCookies(['products']);
     removeCookies('products');
+
+    useEffect(() => {
+        // Perform any necessary actions or logic
+
+        // Force reload the page after a certain delay
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000); // Reload after 2 seconds
+    }, []);
+
+
     return (
         <div className="w-full bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 items-center justify-center flex flex-col">
             <div className="flex w-full justify-center items-center flex-col px-2 md:px-16 lg:px-56 pt-32 pb-14">
