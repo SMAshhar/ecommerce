@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
             },
           };
         }),
-        success_url: `${request.headers.get("origin")}/?success=true`,
+        success_url: `${request.headers.get("origin")}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${request.headers.get("origin")}/?canceled=true`,
       });
       // NextResponse.redirect(session.url as string);

@@ -4,8 +4,8 @@ import React from 'react'
 export default function Subscribe() {
 
     return (
-        <div className='bg-white text-rose-400 py-36 p-16 relative '>
-            <div className="flex text-rose-100  w-full justify-center text-center items-center text-9xl font-light bg-clip-text">
+        <div className='bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 text-rose-400 py-56 p-16 relative '>
+            <div className="flex text-rose-50  w-full justify-center text-center items-center text-9xl font-light bg-clip-text">
                 <h1>Sign up and save</h1>
             </div>
             <div className='flex w-full h-full justify-center items-center flex-col absolute top-0 left-0 pt-10'>

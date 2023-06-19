@@ -14,7 +14,7 @@ export default function AddCart({ item }: { item: product }) {
     const [size, setSize] = useState('500 gm')
 
     const addProduct = () => {
-        const newProduct = { title: item.title, images: item.images, id: item._id, qty: qty, price: size == '500 gm' ? item.price : item.price * qty + 0.25 * item.price * qty, size: size };
+        const newProduct = { title: item.title, images: item.images, id: item._id, qty: qty, price: (size == '500 gm' ? item.price : item.price + 0.25 * item.price), size: size };
         const updatedProducts = [...products, newProduct];
         setProducts(updatedProducts);
         setCookie('products', updatedProducts);

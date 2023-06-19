@@ -28,7 +28,7 @@ export default async function Order({ params }: { params: any }) {
                     <img src={urlFor(data[0].images).url()} alt='product' width={500} height={500} />
                 </div>
                 <div className='md:w-1/2'>
-                    <div className='px-4 md:px-20 lg:px-24'>
+                    <div className='px-4 lg:px-24'>
                         {/* Dets */}
                         <div className='text-gray-500 text-4xl tracking-widest pt-20'>
                             <h1>{data[0].title}</h1>
@@ -47,7 +47,7 @@ export default async function Order({ params }: { params: any }) {
                 </div>
             </div>
             <div className='text-gray-500 text-md px-4 md:px-16 xl:px-24 md:text-center tracking-widest py-24 text-justify'>
-                <h1 className='text-rose-400 text-4xl tracking-widest pb-8'>Product Details</h1>
+                <h1 className='text-rose-400 text-center md:text-start text-4xl tracking-widest pb-8'>Product Details</h1>
                 <p>{data[0].productDetails}</p>
                 {/* Category */}
             </div>

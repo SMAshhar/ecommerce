@@ -14,7 +14,7 @@ export default function Footer() {
                         <Image src={'/logo.png'} alt="logo" height={50} width={150} />
                     </div>
                     <div className='mb-10'>
-                        For Us: Tea is life. Tea is the air we breath. 
+                        For Us: Tea is the air we breath. Tea is life.
                     </div>
                     <div className='flex gap-4'>
                         <Link href='/' className='flex h-10 w-10 justify-center items-center  rounded-lg bg-gray-200'><IoLogoTwitter /></Link>
