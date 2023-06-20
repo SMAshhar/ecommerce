@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 
 const slides = [
     {
-        title: 'Every Morning as Fresh as Lemons...!',
-        image: '/tea1.webp',
+        title: 'Try Our Matcha For A Vitalized Morning',
+        image: '/matcha.jpg',
     },
     {
-        title: 'Be Fit EveryDay, All The Time...!',
-        image: '/tea2.jpg',
+        title: 'Be As Light As Your Tea...!',
+        image: '/pinkTea.jpg',
     },
 ];
 

@@ -18,7 +18,6 @@ export default function AddCart({ item }: { item: product }) {
         const updatedProducts = [...products, newProduct];
         setProducts(updatedProducts);
         setCookie('products', updatedProducts);
-        console.log(newProduct)
         toast.success(`${qty} packets of ${item.title} of ${size} added to cart.`, {
             icon: '❤️',
             style: {

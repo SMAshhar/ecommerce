@@ -58,14 +58,8 @@ export default function Cart() {
 
     const products = cookies.products || [];
 
-    // console.log('this is products: ', products, products.length)
-
     const handleDelete = (id: string) => {
-        // setTrash(true);
         const updatedProducts = products.filter((p: any) => p.id !== id);
-        // setTimeout(() => {
-        //     setTrash(false);
-        // }, 2000);
 
         setCookies('products', updatedProducts);
         toast.success('Item removed successfully.', {
@@ -78,13 +72,11 @@ export default function Cart() {
         });
     };
 
-    // Retrieve the products array from cookies
-    console.log(products)
-
     if (products.length > 0) {
         return (
             <div className="flex flex-col gap-8" >
-                <div className={`px-8 mt-20 mb-14 w-full text-center py-5 text-5xl md:text-7xl xl:text-8xl ${cal.variable} font-cal text-rose-600`}>Cart</div>
+                {/* <div className={`px-8 mt-20 mb-14 w-full text-center py-5 text-5xl md:text-7xl xl:text-8xl ${cal.variable} font-cal text-rose-600`}>Cart</div> */}
+                <div className={`px-8 mt-20 mb-14 w-full text-center py-5 text-5xl md:text-7xl xl:text-8xl font-extralight italic text-rose-600`}>Cart</div>
                 <div className="text-gray-500 bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 mx-4 md:mx-20 flex flex-col my-8">
                     {products.map((item: any, index: number) => (
                         <div key={index}>
