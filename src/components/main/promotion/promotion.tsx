@@ -17,19 +17,19 @@ const slides: Slide[] = [
                 name: 'Gyokuro',
                 image: '/tea/gyokoro/gyokoro.jpg',
                 price: 27.00,
-                _id:'8123e4a0-0ac3-4f47-b3bb-2bb053da6c6b'
+                _id: '8123e4a0-0ac3-4f47-b3bb-2bb053da6c6b'
             },
             {
                 name: 'Houjicha',
                 image: '/tea/houjicha/houjicha.jpg',
                 price: 10.00,
-                _id:'314e9859-bcab-446f-b1b1-1434c57dce3c'
+                _id: '314e9859-bcab-446f-b1b1-1434c57dce3c'
             },
             {
                 name: 'Kamairicha',
                 image: '/tea/kamairicha/kamairicha.jpg',
                 price: 11.00,
-                _id:'46cf20b9-1597-44f8-a1f5-8d0d3f992eb9'
+                _id: '46cf20b9-1597-44f8-a1f5-8d0d3f992eb9'
             },
         ],
     },
@@ -40,23 +40,23 @@ const slides: Slide[] = [
                 name: 'Koucha',
                 image: '/tea/koucha/koucha.jpeg',
                 price: 20.00,
-                _id:'2ab29b4c-31b0-447c-8943-6afe128584cb'
+                _id: '2ab29b4c-31b0-447c-8943-6afe128584cb'
             },
             {
                 name: 'Tamaryokucha',
                 image: '/tea/tamaryokucha/tamaryokucha.jpg',
                 price: 11.00,
-                _id:'755629a1-40b9-4913-8ae7-af14ab6cf4ef'
+                _id: '755629a1-40b9-4913-8ae7-af14ab6cf4ef'
             },
             {
                 name: 'Sencha',
                 image: '/tea/sencha/sencha.jpg',
                 price: 22.00,
-                _id:'32951850-c724-4de6-b5f1-2659ec668eb4'
+                _id: '32951850-c724-4de6-b5f1-2659ec668eb4'
             },
         ],
     },
-    
+
     // Add more slides as needed
 ];
 

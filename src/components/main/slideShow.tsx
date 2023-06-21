@@ -32,7 +32,7 @@ const Slideshow: React.FC = () => {
                         }`}
                 >
                     <div className="flex items-center justify-center h-full">
-                        <h1 className="text-6xl font-light text-white justify-center items-center italic flex z-50">{slide.title}</h1>
+                        <h1 className="p-4 text-3xl md:text-6xl font-light text-white justify-center items-center italic flex z-50">{slide.title}</h1>
                     </div>
                     <img
                         src={slide.image}

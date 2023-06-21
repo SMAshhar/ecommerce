@@ -33,9 +33,9 @@ export default function AddCart({ item }: { item: product }) {
     return (
         <div className='flex flex-col justify-start py-8 gap-1'>
             <div className='flex'>
-                <button onClick={() => setSize("500 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-s-3xl flex rounded-e-3xl justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-lg mr-8'>500 gm</button>
-                <button onClick={() => setSize("750 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-s-3xl flex rounded-e-3xl justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-lg mr-8'>750 gm</button>
-                <div className='text-gray-500 text-2xl flex justify-center items-center py-4'>
+                <button onClick={() => setSize("500 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-s-3xl flex rounded-e-3xl justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-sm md:text-lg mr-8'>500 gm</button>
+                <button onClick={() => setSize("750 gm")} className='px-2 cursor-pointer border-2 focus:ring-1 rounded-s-3xl flex rounded-e-3xl justify-center items-center hover:border-2 border-rose-400 bg-white hover:shadow-xl text-gray-700 text-sm md:text-lg mr-8'>750 gm</button>
+                <div className='text-gray-500 text-lg md:text-2xl flex justify-center items-center py-4'>
                     {`$ ${size == '500 gm' ? item.price * qty : item.price * qty + 0.25 * item.price * qty}`}
                     {/* $s */}
                 </div>
@@ -45,7 +45,7 @@ export default function AddCart({ item }: { item: product }) {
                     Quantity:
                 </div>
                 <button onClick={qty <= 1 ? () => setQty(1) : () => setQty(qty - 1)} className=' rounded-full h-10 w-10 flex justify-center items-center border-2 border-rose-300 bg-white hover:shadow-xl text-rose-500 text-lg font-bold'>-</button>
-                <div className=' text-rose-500 flex justify-center  p-2 h-10'>{qty} x {size}</div>
+                <div className=' text-rose-500 flex justify-center text-sm md:text-lg py-2 px-1 md:px-2 h-10'>{qty} x {size}</div>
                 {/* Qty plus and minus ammount */}
                 <button onClick={qty >= 99 ? () => setQty(qty) : () => setQty(qty + 1)} className='rounded-full h-10 w-10 flex justify-center items-center border-2 border-rose-300 bg-white hover:shadow-xl text-rose-500 text-lg font-bold'>+</button>
             </div>
