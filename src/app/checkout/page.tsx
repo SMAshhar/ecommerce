@@ -25,7 +25,7 @@ const cal = localFont({
 async function CartTile2(title: string, qty: number, price: number, images: any, size: string, id: string) {
 
     return (
-        <div className='relative my-2 flex flex-col sm:flex-row gap-4 w-full max-w-3/4 p-2 md:px-4 text-gray-500'>
+        <div className='relative my-4 flex flex-col sm:flex-row gap-4 w-full max-w-3/4 p-2 md:px-4 text-gray-500'>
             <div className='h-full items-center justify-center flex'>
                 <img src={urlFor(images).url()} alt={title} width={200} height={200} />
             </div>
@@ -80,7 +80,7 @@ export default function Cart() {
                 <div className="text-gray-500 bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 mx-4 md:mx-20 flex flex-col my-8">
                     {products.map((item: any, index: number) => (
                         <div key={index}>
-                            <div className="flex bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 border-2 rounded-lg">
+                            <div className="flex bg-gradient-to-r from-rose-200 via-rose-50 to-rose-200 border-2 rounded-lg my-4">
                                 {CartTile2(item.title, item.qty, item.price, item.images, item.size, item.id)}
                                 <div className='text-xl text-black'>
                                     <div className='flex flex-col justify-end w-full p-2' >
