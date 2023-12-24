@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { useCookies } from 'react-cookie';
 import localFont from '@next/font/local';
 import Link from 'next/link';
+import { NextResponse } from 'next/server';
 
 const cal = localFont({
     src: [
@@ -23,9 +24,10 @@ export default function Success() {
         // Perform any necessary actions or logic
 
         // Force reload the page after a certain delay
+        window.location.reload();
         setTimeout(() => {
-            window.location.reload();
-        }, 1000); // Reload after 2 seconds
+            return NextResponse.redirect('/')
+        }, 5000); // Reload after 2 seconds
     }, []);
 
 

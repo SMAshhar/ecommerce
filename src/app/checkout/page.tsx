@@ -60,7 +60,7 @@ export default function Cart() {
 
     const handleDelete = (id: string) => {
         const updatedProducts = products.filter((p: any) => p.id !== id);
-
+        
         setCookies('products', updatedProducts);
         toast.success('Item removed successfully.', {
             icon: '❤️',
@@ -70,6 +70,7 @@ export default function Cart() {
                 color: '#fff',
             },
         });
+        console.log(updatedProducts)
     };
 
     if (products.length > 0) {

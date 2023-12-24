@@ -21,11 +21,11 @@ export default function AddCart({ item }: { item: product }) {
         toast.success(`${qty} packets of ${item.title} of ${size} added to cart.`, {
             icon: '❤️',
             style: {
-              borderRadius: '10px',
-              background: '#FB856A',
-              color: '#fff',
+                borderRadius: '10px',
+                background: '#009999',
+                color: '#fff',
             },
-          })
+        })
     };
 
 
